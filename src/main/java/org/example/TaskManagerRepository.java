@@ -1,11 +1,14 @@
 package org.example;
 
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Scope("prototype")
 public class TaskManagerRepository {
     private static TaskManagerRepository instance;
     private final List<Task> tasks;
