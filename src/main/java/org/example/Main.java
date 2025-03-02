@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        ITaskManagerService taskManagerService = context.getBean(ITaskManagerService.class);
-        ITaskManagerService taskManagerService1 = context.getBean(ITaskManagerService.class);
+        ITaskManagerService taskManagerService = context.getBean("taskManagerService",ITaskManagerService.class);
+        ITaskManagerService taskManagerService1 = context.getBean("taskManagerService2",ITaskManagerService.class);
 
         Task task1 = new Task(1,"Work Out");
         Task task2 = new Task(2,"Go to School");
@@ -22,6 +22,10 @@ public class Main {
         taskManagerService1.SaveTask(task4);
 
         taskManagerService.ShowTasks();
+        taskManagerService1.ShowTasks();
+
+        taskManagerService1.DeleteTask(task3);
+
         taskManagerService1.ShowTasks();
 
         context.close();
